@@ -43,10 +43,7 @@ if(isset($_SESSION['username'])){
                 <input type="radio" name="artist_radio" value="First Image" checked>First Image
                 <input type="radio" name="artist_radio" value="All Images">All Images
             <br>
-        <h3>What format would you like to use?</h3>
-            <input type="radio" name="format_radio" value="HTML" checked>HTML
-            <input type="radio" name="format_radio" value="PDF">PDF
-            <br>
+        
         <h3>Generate Table of Contents</h3>
             <input type="checkbox" name="table_of_contents" value="Table of Contents" checked>Yes
             <br>
@@ -87,9 +84,9 @@ if(isset($_SESSION['username'])){
         </div>';
 // }
 
-    // else{
-    // 	echo "0 results";
-    // }
+//     else{
+//     	echo "0 results";
+//     }
 
 	}
 

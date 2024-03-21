@@ -1,4 +1,9 @@
-<?php include 'navigation.php';
+<div class="navigation-container">
+    <?php include 'navigation.php'; ?>
+</div>
+
+<div class="content-container">
+    <?php
 require_once('db_configuration.php');
 
 if(!isset($_SESSION)) 
@@ -106,6 +111,7 @@ if(isset($_SESSION['username'])){
         </a>
         </center>
     </td>
+    <tr>
     <td style="padding: 20px">
         <center>
         <a href="configure_edit.php">
@@ -115,7 +121,6 @@ if(isset($_SESSION['username'])){
         </a>
         </center>
     </td>
-    <tr>
     <td style="padding: 20px">
         <center>
         <a href="create_resources.php">
@@ -142,7 +147,7 @@ if(isset($_SESSION['username'])){
     Dances
     </a>
     </center>
-</td>
+    </td>
     </td>
     </tr>
     </tr>
