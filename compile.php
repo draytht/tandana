@@ -43,6 +43,7 @@ if(isset($_SESSION['username'])){
                 <input type="radio" name="artist_radio" value="First Image" checked>First Image
                 <input type="radio" name="artist_radio" value="All Images">All Images
             <br>
+            
         
         <h3>Generate Table of Contents</h3>
             <input type="checkbox" name="table_of_contents" value="Table of Contents" checked>Yes

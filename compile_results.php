@@ -308,7 +308,7 @@ else{
         if(isset($_SESSION['username'])){
 
             // If user selects html
-            if(isset($html) && $html == true){
+            // if(isset($html) && $html == true){
                 // Print front page, front pages, table of contents etc...
                     echo '
                     <center>
@@ -525,10 +525,10 @@ else{
                     <br>
                     '
                     ;
-        }
-            else{
-                echo "0 results";
-            }
+        // }
+        //     else{
+        //         echo "0 results";
+        //     }
         }
         // START PDF COMPILE
         // else{
