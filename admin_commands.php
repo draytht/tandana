@@ -140,13 +140,13 @@ if(isset($_SESSION['username'])){
         </center>
     </td>
     <td style="padding: 20px">
-    <center>
-    <a href="manage_dances.php">
-    <img src="assets/images/index_dance.png" width="150px" height="150px"/>
-    <br>
-    Dances
-    </a>
-    </center>
+        <center>
+        <a href="manage_dances.php">
+        <img src="assets/images/index_dance.png" width="150px" height="150px"/>
+        <br>
+        Dances
+        </a>
+        </center>
     </td>
     </td>
     </tr>
