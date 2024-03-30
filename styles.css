@@ -179,7 +179,7 @@ label {color: #ffffff;}
 .compile_table tr:nth-child(even) { background-color:#eaeff7; color:#000000; font-size:12px; font-family:arial; }
 
 /* Sticky Navigation */
-.masthead_wrapper { position:fixed; z-index:100; }
+.masthead_wrapper { position:relative; }
 
 /* configure_edit Form styles */
 .configure_form label { color:#000000; }

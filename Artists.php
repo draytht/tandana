@@ -1,114 +1,141 @@
+<?php include 'navigation.php';
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    $conn = new mysqli("localhost", "root", "", "tandana_db");
+    if ($conn->connect_error) {
+        die('Connect Error (' . $conn->connect_errno . ') ' . $conn->connect_error);
+    }                   
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
-<title>Artists</title>
-<style type="text/css">
-    .link { 
-        float:left;
-        position:relative; 
-        top:700px;
+    <title>Artists</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style type="text/css">
+    .link {
+          position:relative; 
+          top:700px;
+      }
+    li a:hover{
+        background-color:green;
     }
-    #image{
-        float:left;
-        position:relative; 
-        top:350px;
-        left:0px;
+    .thumbnail_wrapper:hover{
+        transform: scale(1.15);
     }
-</style>
+    .caption{
+        background-color: #0a244d !important; 
+    }
+    p{
+        color:white;
+    }
+    .responsive {
+        max-width: 100%;
+        height: auto;
+    }
+    .navigation-container  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #cccccc;
+        position: relative;
+    }
+  </style>
 </head>
+
 <body>
-<form method='get'>
-<?PHP include 'navigation.php';
-      require_once('db_configuration.php');
-if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
+    <div>
+    <form method='get'>
+        <?PHP
+        require_once('db_configuration.php');
+        ?>        
+    </form>
+    </div>
+    <button class="centered-button" onclick="window.location.href='create_artists.php';">Create An Artist</button>
+    <style>
+    .centered-button {
+        background-color: #3953ad; 
+        color: white; 
+        padding: 10px 20px; /
+        border: none; 
+        border-radius: 5px; 
+        margin-top: 20px; 
+        display: block; 
+        margin-left: auto; 
+        margin-right: auto; 
+        cursor: pointer; 
+        text-align: center; 
+    }
+    .centered-button:hover {
+        background-color: #45a049; 
+    }
+    </style>
+    
+    <div>
+        <table id="artist_table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                        <th>ID</th>
+                        <th>Last name</th>
+                        <th>First name</th>
+                        <th>Email</th>
+                        <th>Password Hash</th>
+                        <th>Images</th>
+                        <th>Phonenumber</th>
+                        <th>Specialty</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <th>ACTIONS</th>
+                        <?php endif; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $startrow = isset($_GET['startrow']) && is_numeric($_GET['startrow']) ? (int)$_GET['startrow'] : 0;
+                    $fetch = mysqli_query($conn, "SELECT * FROM Artists") or die(mysqli_error($conn));
+                    $num = Mysqli_num_rows($fetch);
 
-// Create connection
-//$conn = new mysqli($servername, $username, $password, $database);
+                    if ($num > 0) {
+                        while ($row = mysqli_fetch_row($fetch)) {
+                            echo "<tr>";
+                            foreach ($row as $value) {
+                                echo "<td>$value</td>";
+                            }
+                            if (isset($_SESSION['username'])) {
+                                echo '<td><a href="update_artists.php?id=' . $row[0] . '">Edit </a><a href="delete_artist.php?id=' . $row[0] . '">Delete</a></td>';
+                            }
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='13'>No artists found.</td></tr>";
+                    }
+                    ?>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
 
-$conn = new mysqli("localhost","root" ,"" , "tandana_db");        
-if ($conn->connect_error) {
-    die('Connect Error (' . $conn->connect_errno . ') '
-            . $conn->connect_error);
-}
-//check if the starting row variable was passed in the URL or not
-if (!isset($_GET['startrow']) or !is_numeric($_GET['startrow'])) {
-  //we give the value of the starting row to 0 because nothing was found in URL
-  $startrow = 0;
-//otherwise we take the value from the URL
-} else {
-  $startrow = (int)$_GET['startrow'];
-}
-/*
-D
-RESOURCE_TYPE
-RESOURCE_NAMES
-RESOURCE_LOCATION
-ISBN
-PUBLICATION_DATE
-AUTHOR_NAME
-PUBLICATION_COMPANY
-AUTHOR2_NAME
-AUTHOR3_NAME
-*/
-//this part goes after the checking of the $_GET var
-$fetch = mysqli_query($conn,"SELECT * FROM Artists LIMIT $startrow, 10")or
-die(mysqli_error($conn));
-   $num=Mysqli_num_rows($fetch);
+    <script>
+        $(document).ready(function() {
+            $('#artist_table').DataTable({
+                "pageLength": 10
+            });
+        });
+    </script>
 
-        if ($num > 0) {
-            echo "<table border=2 class='artist_table' style='position:absolute; top: 450px;'>";
-            echo "<tr>";
-            if (isset($_SESSION['username'])) {
-                echo '<td>ID</td>';
-                echo '<td>Last name</td>';
-                echo '<td>First name</td>';
-                echo '<td>Email</td>';
-                echo '<td>Password Hash</td>';
-                echo '<td>Images</td>';
-                echo '<td>Phonenumber</td>';
-                echo '<td>Specialty</td>';
-                echo '<td>Country</td>';
-                echo '<td>State</td>';
-                echo '<td>City</td>';
-                echo '<td>Address</td>';
-                echo '<td>ACTIONS</td>';
-            }
-            echo '</tr>';
-        
-            while ($row = mysqli_fetch_row($fetch)) {
-                echo "<tr>";
-                echo '<td>' . $row[0] . '</td>';
-                echo '<td>'.$row[1].'</td>';       
-                echo '<td>'.$row[2].'</td>';
-                echo '<td>'.$row[3].'</td>';       
-                echo '<td>'.$row[4].'</td>';       
-                echo '<td>'.$row[5].'</td>';
-                echo '<td>'.$row[6].'</td>';       
-                echo '<td>'.$row[7].'</td>';       
-                echo '<td>'.$row[8].'</td>';
-                echo '<td>'.$row[9].'</td>';
-                echo '<td>'.$row[10].'</td>';
-                echo '<td>'.$row[11].'</td>';
-                if (isset($_SESSION['username'])) {
-                    echo '<td><a href="update_artists.php?id=' . $row[0] . '">Edit</a><a href="delete_artist.php?id=' . $row[0] . '">Delete</a></td>';
-                }
-                echo "</tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "No artists found.";
-        }
-//now this is the link..
-echo '<a class="link" href="'.$_SERVER['PHP_SELF'].'?startrow='.($startrow+10).'">Next</a>';
-
-$prev = $startrow - 10;
-
-//only print a "Previous" link if a "Next" was clicked
-if ($prev >= 0)
-    echo '<a class="link" href="'.$_SERVER['PHP_SELF'].'?startrow='.$prev.'">Previous</a>';
-?>
-</form>
 </body>
 </html>

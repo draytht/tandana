@@ -6,7 +6,6 @@ $header_image = header_image;
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <title>Dances</title> -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,11 +38,12 @@ $header_image = header_image;
       width: 100%;
       background: #cccccc;
       position: relative;
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
-<div class="masthead_wrapper" class="navigation-container">
+<div>
   <div class="masthead">
     <?php echo '
       <img src="assets/images/'.$header_image.'" class="responsive" id="header_image"/>
@@ -63,7 +63,7 @@ $header_image = header_image;
               echo '<li class="page_admin"><a href="admin_commands.php">Admin</a></li>';
             }
           ?>
-          <li class="page_artists" id=Artists><a class ="menubar" href="Artists.php">Artists</a></li>
+          <!-- <li class="page_artists" id=Artists><a class ="menubar" href="Artists.php">Artists</a></li> -->
           <li>
             <form method="post" action="search.php">
             <input type="text" name="searchData" placeholder="Search..">
