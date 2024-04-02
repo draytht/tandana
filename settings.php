@@ -4,21 +4,19 @@
 <html>
 <head>
 <style type="text/css">
+	.form-wrapper {
+    margin-top: 50px; /* Adjust the margin to create space */
+  }
 	.form-horizontal{
-		position: absolute;
-		top:400px;
+    width: 50%;
+    margin: 0 auto;	
 	}
 	.btn-custom{
-		position: absolute;
-		top:200px;
-		left: 100px;
+    margin-top: 20px;
 	}
 	.black-text{
 		color: black;
 	}
-  label{
-    color: black;
-  }
 	.form-control{
 		width:150%;
 	}
@@ -29,6 +27,7 @@
 
 </body>
 </html>
+<div class="form-wrapper">
 <form class="form-horizontal">
 <fieldset>
 
@@ -141,3 +140,8 @@
 
 </fieldset>
 </form>
+<footer>
+  <?php include 'footer.php'; ?>
+</footer>
+</div>
+

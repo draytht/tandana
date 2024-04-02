@@ -119,6 +119,10 @@ $conn->close();
     </tbody>
 </table>
 
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
+
 <script>
 
     function deleteDance(id) {

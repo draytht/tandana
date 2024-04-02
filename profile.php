@@ -25,7 +25,49 @@ $conn->set_charset("utf8");
 	$sql = "SELECT login_id, username, password FROM login";
 	$result = $conn->query($sql);
 
-if(isset($_SESSION['username'])){
+$userData = [];
+while ($row = $result -> fetch_assoc()) {
+	$userData[] = $row;
+}
+
+//close the connection
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Dances</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+</head>
+<body>
+<table id="users_table" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Login ID</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($userData as $row): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($row['login_id']); ?></td>
+                <td><?php echo htmlspecialchars($row['username']); ?></td>
+                <td><?php echo htmlspecialchars($row['password']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<!-- if(isset($_SESSION['username'])){
 	if ($result->num_rows > 0) {
 		echo '
         <div class="container top_space">
@@ -99,16 +141,19 @@ else {
 echo "<b>Only admins can update.</b>";
 }
 
-?>
-<br><div id="profile">
+?> -->
+<!-- <br><div id="profile">
 <a href="index.php">Return to Home.</a>
-</div>
+</div> -->
 <footer>
 <?php include 'footer.php'; ?>
 </footer>
 
 <script type="text/javascript">
     $(document).ready(function() {
+		$('#users_table').DataTable ({
+			"pageLength":10
+		})
         $('.navbar-nav li').removeClass('active');
         $('.navbar-nav li.page_admin').addClass('active');
     });

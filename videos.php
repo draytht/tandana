@@ -1,7 +1,7 @@
 <?php
 include 'navigation.php';
 require_once('db_configuration.php');
-require_once ('mpdf/mpdf.php');
+//require_once ('mpdf/mpdf.php');
 ?>
 
 <html>
