@@ -15,7 +15,7 @@
 
         echo 
         '
-        <div class="container top_space">
+        <div class="container top_space" style="padding-top: 60px">
         <center>
         <table>
         <tr>

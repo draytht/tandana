@@ -469,7 +469,7 @@ $conn->set_charset("utf8");
 
             if ($result->num_rows > 0) {
             echo '
-            <div class="container top_space" style="padding-bottom: 50px">
+            <div class="container top_space" style="padding-top: 100px">
             <table width="100%"" border="1px">
             <tr>
             <td>
