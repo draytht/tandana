@@ -213,7 +213,13 @@ else {
 $conn->close();
 
 ?>
-
+<style>
+	.container {
+		adding-top: 0 !important; 
+		position: relative; 
+		top: 0 !important; 
+	}
+</style>
 <footer>
 <?php include 'footer.php'; ?>
 </footer>	

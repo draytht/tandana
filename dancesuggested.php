@@ -480,6 +480,7 @@ $conn->close();
 
   gtag('config', 'UA-121774211-1');
 </script>
+</script>
 </head>
 <div class="page-break"></div>
 <footer>

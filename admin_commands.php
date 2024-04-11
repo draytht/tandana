@@ -1,6 +1,6 @@
-<div class="navigation-container">
+<!-- <div class="navigation-container"> -->
     <?php include 'navigation.php'; ?>
-</div>
+<!-- </div> -->
 
 <div class="content-container">
 <?php
@@ -15,11 +15,11 @@
 
         echo 
         '
-        <div class="container top_space" style="padding-top: 60px">
+        <div class="container top_space">
         <center>
         <table>
         <tr>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="compile.php">
             <img src="assets/images/compile.png" width="150px" height="150px"/>
@@ -28,7 +28,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="html.php" target="_blank">
             <img src="assets/images/html.png" width="150px" height="150px"/>
@@ -37,7 +37,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="profile.php">
             <img src="assets/images/users.png" width="150px" height="150px"/>
@@ -46,7 +46,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="report.php">
             <img src="assets/images/report.png" width="150px" height="150px"/>
@@ -57,7 +57,7 @@
         </td>
         </tr>
         <tr>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="export.php">
             <img src="assets/images/export.png" width="150px" height="150px"/>
@@ -66,7 +66,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="import.php">
             <img src="assets/images/import.png" width="150px" height="150px"/>
@@ -75,7 +75,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="contents.php">
             <img src="assets/images/contents.png" width="150px" height="150px"/>
@@ -84,7 +84,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="images.php">
             <img src="assets/images/images.png" width="150px" height="150px"/>
@@ -93,7 +93,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="videos.php">
             <img src="assets/images/videos.png" width="150px" height="150px"/>
@@ -103,7 +103,7 @@
             </center>
         </td>
         <tr>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="configure_edit.php">
             <img src="assets/images/configure.png" width="150px" height="150px"/>
@@ -112,7 +112,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="Resources.php">
             <img src="assets/images/003-512.png" width="150px" height="150px"/>
@@ -121,7 +121,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="Artists.php">
             <img src="assets/images/index_dance.png" width="150px" height="150px"/>
@@ -130,7 +130,7 @@
             </a>
             </center>
         </td>
-        <td style="padding: 20px">
+        <td style="padding: 40px">
             <center>
             <a href="manage_dances.php">
             <img src="assets/images/index_dance.png" width="150px" height="150px"/>
@@ -163,5 +163,12 @@
         $('.navbar-nav li.page_admin').addClass('active');
     });
 </script>
+<style type="text/css">
+	.container {
+    padding-top: 0 !important; 
+    position: relative; 
+    top: 0 !important; 
+}
+</style>
 </body>
 </html>

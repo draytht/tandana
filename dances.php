@@ -21,6 +21,14 @@ session_cache_limiter(false);
 session_start();
 
  ?>
+
+<style type="text/css">
+		.dances_display, .left_nav {
+			padding-top: 0 !important; 
+			position: relative; 
+			top: 0 !important; 
+		}
+</style>
 <div class="col-md-2 left_nav" style="padding-left: 0;">
 <div class="translation_wrapper">
             <div><a class="dance_telugu_name" href="#" onClick="sortTeluguName('ALL')"> </a></div>
